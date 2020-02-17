@@ -1,0 +1,22 @@
+create FUNCTION "F_KEEP_DATE"( TDATE DATE, TTODAY DATE) 
+RETURNS RETVALUE CHAR
+LANGUAGE SQLSCRIPT   
+SQL SECURITY INVOKER AS
+/******************************************************************************
+NAME: F_KEEP_DATE
+PURPOSE: RETURNS T/F WHETHER OR NOT THE DATE MEETS THE CRITERIA TO MAINTAIN DATA.
+REVISIONS:
+VER DATE AUTHOR DESCRIPTION
+--------- ---------- --------------- ------------------------------------
+1.0 6/18/2008 1. CREATED THIS FUNCTION.
+******************************************************************************/
+BEGIN
+RETVALUE := 'F';
+IF :TDATE BETWEEN ADD_DAYS (TO_DATE (:TTODAY, 'YYYY-MM-DD'), -30) AND :TTODAY 
+OR  TO_CHAR( EXTRACT (MONTH FROM ADD_DAYS (TO_DATE (:TDATE, 'YYYY-MM-DD'), 1)))<> 
+TO_CHAR( EXTRACT (MONTH FROM TO_DATE (TDATE, 'YYYY-MM-DD')))
+THEN 
+RETVALUE := 'T';
+END IF;
+--RETURN :RETVALUE;
+END ;
