@@ -3,7 +3,7 @@ Example refactoring series taking a complex SQL and making it easier one step at
 
 On 15.02.2020, a rather rain-drenched stormy day in Melbourne, Australia, the [SAP Inside Tracek #sitMEL – Full Day Event](https://blogs.sap.com/2020/01/19/sap-inside-track-sitmel-full-day-event-in-melbourne-15th-feb-2020/) was held.
 
-I was honored to get a speaker slot and the chance to talk about ["Humane DB design and programming"](--link to presentation). 
+I was honored to get a speaker slot and the chance to talk about ["Humane DB design and programming"](https://lbreddemann.org/sap-inside-track-sitmel-full-day-event-in-melbourne/). 
 
 A main point of this presentation is to **refactor SQL code towards understanding**. In the presentation I walk through two examples of code refactoring.
 
@@ -16,8 +16,8 @@ This code however, goes a bit farther with the refactoring.
 
 ## Example 2: "Customer Aging report/Account receivable report"
 Another example from the SAP Community Platform [Q&A forum](https://answers.sap.com/questions/300196/customer-aging-report-for-hana.html).  
-A rather classic report of outstanding payments by customer over time periods.  
-This example covers more different refactoring steps and highlights newly gained insights along the process. 
+A rather classic report of outstanding payments by customers over time-periods.  
+This example covers more different refactoring steps and highlights newly gained insights about the statement along the process. 
 
 ## What is is for?
 The examples covered here are for educational/entertainent purposes only.  
@@ -36,10 +36,14 @@ The idea is to run the original code and the changed versions side by side to sp
 For example 2 there are also files (`create schema`) to create the tables referenced in the code and to populate them with some data.  
 For ad hoc volume testing, there is also a file `create big schema.sql` that generates Millions of records in the referenced `JDT1` table.  
 
-The mock data I used in this example has been created using [Mockaroo])(https://mockaroo.com/) and does **not have any real-life meaning at all**.
+## Where are the tables and the data from?
 
-Speaking of the tables: the original question referred to a SAP Business One system and the referenced tables seem to stem from there.
+The mock data I used in this example has been created using [Mockaroo](https://mockaroo.com/) and does **not have any real-life meaning at all**.
 
+Speaking of the tables: the original question referred to a SAP Business One system and the referenced tables seem to stem from there.  
 As I do not have access to such a system, I googled the table definitions (found [here JDT1](http://www.saptables.co.uk/?schema=BusinessOne9.0&module_id=4&table=JDT1) and [here OCRD](http://www.saptables.co.uk/?schema=BusinessOne9.0&table=OCRD)) and removed any columns not referenced in the statements.  
 
-This means, these are **not the tables that you can find in a SAP system**! Again, do not use these coding examples in your productive systems.
+This means, these are **not the tables that you can find in a SAP system**!   
+Again, do not use these coding examples in your productive systems.
+
+The code has been developed with a [SAP HANA Express Edition VM](https://www.sap.com/cmp/td/sap-hana-express-edition.html) (HANA 2 SP04). 
